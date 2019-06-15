@@ -1,0 +1,24 @@
+{% load i18n apphooks_config_tags %}
+
+<ul class="results-list list-unstyled">
+    <h3>{% blocktrans with query=query %}Most recent dashboards containing "<strong>{{ query }}</strong>"{% endblocktrans %}</h3>
+    {% for dashboard in object_list %}
+        <li{% if not dashboard.is_published %} class="unpublished"{% endif %}>
+            <a href="{% namespace_url "dashboard-detail" dashboard.slug namespace=view.app_config.namespace default='' %}">
+                <strong>
+                    {% for category in dashboard.categories.all %}
+                        {{ category.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </strong>
+                {{ dashboard.title }}<br />
+                <span class="text-muted">{{ dashboard.lead_in|striptags|truncatewords:"10"|safe }}</span>
+            </a>
+        </li>
+    {% empty %}
+        {% if query %}
+            <p class="well">{% blocktrans with query=query %}No dashboards found{% endblocktrans %}</p>
+        {% else %}
+            <p class="well">{% trans "Enter a query above" %}</p>
+        {% endif %}
+    {% endfor %}
+</ul>

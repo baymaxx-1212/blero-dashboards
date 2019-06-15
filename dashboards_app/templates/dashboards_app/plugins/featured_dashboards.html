@@ -1,0 +1,7 @@
+{% load i18n %}
+
+{% for dashboard in dashboards_list %}
+    {% include "dashboards_app/includes/dashboard.html" with namespace=instance.app_config.namespace %}
+{% empty %}
+    <p>{% trans "No items available" %}</p>
+{% endfor %}

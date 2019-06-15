@@ -1,0 +1,105 @@
+{% load cms_tags %}
+{% load static %}
+
+<div  class="bd-callout bd-callout-info submit_form_addon resizable-draggable" position_model="pluginposition" app_label="{{ app_label }}" model_name="{{ model_name }}"
+      id="{{ instance.pk }}"
+      style=
+          "{% if position.fields.is_resized %}top:{{ position.fields.top }}; left:{{ position.fields.left }}; width:{{ position.fields.width }};
+        height:{{ position.fields.height }};{% endif %}background-color: white; cursor: -webkit-grab; cursor: grab;">
+
+    <!-- celery progress bar -->
+    <div class='progress-wrapper'>
+    <div id='progress-bar-{{ instance.pk }}' class='progress-bar' style="background-color: #68a9ef; width: 0%;">&nbsp;</div>
+    </div>
+    <div id="progress-bar-message-{{ instance.pk }}"></div>
+    <div id="progress-bar-message-ajax-{{ instance.pk }}"></div>
+
+    <h4 id="dealing-with-specificity">{{ instance.form_name }}{{ left }}</h4>
+    <form>
+        <input type="hidden" value="{{ instance.ajax_function }}" name="ajax_function">
+        <input type="hidden" value="{{ instance.py_function }}" name="py_function">
+        <div class="row">
+            <div class="col-md-12">
+
+
+                    {% for i in inputs %}
+                        {% if i.input_type == "date" %}
+
+                                    <label class="col-md-12 text-info form-element-label resizable-draggable"
+                                           position_model="labelpluginposition"  app_label="{{ i.app_label }}" model_name="{{ i.model_name }}"
+                                           style="{% if i.label_position and i.label_position.is_resized %}top:{{ i.label_position.top }}; left:{{ i.label_position.left }}; width:{{ i.label_position.width }}; height:{{ i.label_position.height }};{% endif %}font-size:12px;"
+                                       for="{{ i.input_name }}-{{ forloop.counter }}" id="{{ i.pk }}">{{ i.input_name }}</label>
+                                    <div class="col-md-3 form-element-container  resizable-draggable"
+                                        position_model="inputpluginposition" app_label="{{ i.app_label }}" model_name="{{ i.model_name }}"
+                                     id="{{ i.pk }}" style="{% if i.inp_position and i.inp_position.is_resized %}top:{{ i.inp_position.top }}; left:{{ i.inp_position.left }}; width:{{ i.inp_position.width }}; height:{{ i.inp_position.height }};{% endif %}" {% if i.inp_position and i.inp_position.is_resized %} data-width="{{ i.inp_position.width }}" {% endif %}>
+
+                                        <input name="{{ i.input_name }}-{{ forloop.counter }}" type="{{ i.input_type }}"
+                                       class="form-control form-control-sm form-element"
+                                       id="{{ i.input_name }}-{{ forloop.counter }}"
+                                       placeholder="Enter input name" value="{{ i.input_value }}"
+                                               style="font-size: 12px; margin:1px"  >
+
+                                    </div>
+
+                        {% else %}
+
+                            <label class=" col-md-12 text-info form-element-label resizable-draggable"
+                                   position_model="labelpluginposition"  app_label="{{ i.app_label }}" model_name="{{ i.model_name }}"
+                                   style="{% if i.label_position and i.label_position.is_resized %}top:{{ i.label_position.top }}; left:{{ i.label_position.left }}; width:{{ i.label_position.width }}; height:{{ i.label_position.height }};{% endif %}font-size:12px;"
+                               for="{{ i.input_name }}-{{ forloop.counter }}"  id="{{ i.pk }}">{{ i.input_name }}</label>
+
+                            {%  if  inputs|length == 2 %}
+                            <div class="col-md-12 form-element-container resizable-draggable"
+                                 position_model="inputpluginposition"  app_label="{{ i.app_label }}" model_name="{{ i.model_name }}"
+                                 id="{{ i.pk }}" style="{% if i.inp_position and i.inp_position.is_resized %}top:{{ i.inp_position.top }}; left:{{ i.inp_position.left }}; width:{{ i.inp_position.width }}; height:{{ i.inp_position.height }};{% endif %}" {% if i.inp_position and i.inp_position.is_resized %} data-width="{{ i.inp_position.width }}" {% endif %}>
+                            {% else %}
+                            <div class="col-md-12 form-element-container resizable-draggable"
+                                  position_model="inputpluginposition" app_label="{{ i.app_label }}" model_name="{{ i.model_name }}"
+                                 id="{{ i.pk }}" style="{% if i.inp_position and i.inp_position.is_resized %}top:{{ i.inp_position.top }}; left:{{ i.inp_position.left }};width: {{ i.inp_position.width }}; height:{{ i.inp_position.height }};{% endif %}" {% if i.inp_position and i.inp_position.is_resized %} data-width="{{ i.inp_position.width }}" {% endif %}>
+                            {% endif %}
+
+
+
+                            {% if i.input_type == "checkbox" %}
+                                <input name="{{ i.input_name }}-{{ forloop.counter }}" type="{{ i.input_type }}" class="form-control form-element "
+                                       id="{{ i.input_name }}-{{ forloop.counter }}"
+                                       {% if i.default_value == "true" %}checked="checked"{% endif %}>
+                            {% else %}
+                                <input name="{{ i.input_name }}-{{ forloop.counter }}" type="{{ i.input_type }}"
+                                       class="form-control form-control-sm form-element"
+                                       id="{{ i.input_name }}-{{ forloop.counter }}"
+                                       placeholder="Enter input name" value="{{ i.input_value }}"
+                                       style="font-size: 12px; margin:1px" >
+                            {% endif %}
+                            </div>
+                        {% endif %}
+
+                    {% endfor %}
+
+            </div>
+        </div>
+        <div class="form-childs-container" style="height: 50%" id="form-child-container-{{ instance.pk }}">
+        {% for plugin in instance.child_plugin_instances %}
+
+
+            {% render_plugin plugin %}
+
+        {% endfor %}
+        </div>
+
+        <div class="form-element-container btn-container resizable-draggable"
+             position_model="formbtnpluginposition" app_label="{{ instance.btn_position.app_label }}"
+             model_name="{{ model_name }}" id="{{ instance.pk }}"
+             style="{% if instance.btn_position and instance.btn_position.is_resized %} top:{{ instance.btn_position.top }}; left:{{ instance.btn_position.left }}; width:{{ instance.btn_position.width }}; height:{{ instance.btn_position.height }};{% endif %}display:inline-block;">
+            <input style="margin: 10px;margin-left: 0px" type="button" class="submit_form btn btn-info btn-sm" id="calculate" value="{{ instance.button_name }}">
+        </div>
+
+
+
+
+        <!-- Below code hides/shows the save model button -->
+        <input type="hidden" name="save_calculate" id="save_calculate" value="0">
+        <input type="hidden" value="{{ instance.pk }}" name="form_instance">
+
+    </form>
+</div>

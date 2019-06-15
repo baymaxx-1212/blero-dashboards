@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load cms_tags %}
+{% load i18n staticfiles thumbnail cms_tags apphooks_config_tags %}
+
+{% block content %}
+<LINK REL=StyleSheet HREF="/static/css/dash_docs_app.css" TYPE="text/css" MEDIA=all>
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+{% if doc_exist == True %}
+<div id="doc_title">
+Documentation Dashboard:  {{ dashboard_title }}
+</div>
+<div id="sidebar_doc">
+{% render_placeholder instance.sidebar_content %}
+</div>
+
+<div id="content_doc">
+{% render_placeholder instance.dash_docs_content %}
+</div>
+{% else %}
+    doc dont excist<p>{{ dashboard_id }} </p>
+{%  endif %}
+
+
+{% endblock content %}

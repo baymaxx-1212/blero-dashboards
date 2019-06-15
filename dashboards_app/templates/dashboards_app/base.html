@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load cms_tags %}
+{% load i18n cms_tags menu_tags sekizai_tags %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% page_attribute 'meta_description' %}">
+    <title>{% block title %}{% page_attribute page_title %} - {{ request.site.name }}{% endblock title %}</title>
+    {% block javascript-top %}
+
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/scroller/1.5.1/js/dataTables.scroller.min.js"></script>
+
+    {% endblock javascript-top %}
+    {% block stylesheets %}
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="{% static 'dashboards_app/css/dashboard_explorer.css' %}" rel="stylesheet">
+        <link href="{% static 'dashboards_app/css/dashboard.css' %}" rel="stylesheet">
+
+        <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet"/>
+        <link href="https://cdn.datatables.net/scroller/1.5.1/css/scroller.dataTables.min.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/handsontable-pro@6.2.0/dist/handsontable.full.min.css" rel="stylesheet"
+              media="screen">
+        {#        handontable js should follow after css#}
+          <script src="https://cdn.jsdelivr.net/npm/handsontable-pro@6.2.0/dist/handsontable.full.min.js"></script>
+
+
+
+
+    {% endblock stylesheets %}
+    {% block javascript-end %}
+    {% endblock javascript-end %}
+</head>
+
+{% block content %}
+    {% block dashboards_app_content %}
+        {# dashboard_list.html and dashboard_detail.html extend this template #}
+    {% endblock %}
+
+{% endblock content %}
+{% block javascript-bottom %}
+
+
+{% endblock %}

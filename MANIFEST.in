@@ -1,0 +1,5 @@
+include LICENSE
+include README.rst
+recursive-include dashboards_app/static *
+recursive-include dashboards_app/templates *
+recursive-include docs *

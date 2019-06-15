@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<div class="aldryn aldryn-dashboards_app aldryn-dashboards_app-authors">
+    <ul class="list-unstyled">
+        {% for author in authors_list %}
+            <li>
+                {% include "dashboards_app/includes/author.html" with author_view="true" namespace=instance.app_config.namespace %}
+            </li>
+        {% empty %}
+            <li class="well">{% trans "No items available" %}</li>
+        {% endfor %}
+    </ul>
+</div>

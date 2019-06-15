@@ -1,0 +1,78 @@
+<div class="terminal_holder bd-callout bd-callout-info resizable-draggable" position_model="pluginposition" app_label="{{ app_label }}" model_name="{{ model_name }}"
+     id="{{ instance.pk }}"
+     style=  "{% if position.fields.is_resized %}top:{{ position.fields.top }}; left:{{ position.fields.left }}; width:{{ position.fields.width }};
+        height:{{ position.fields.height }}; {% else %} height:300px; width:200px ;top:100px{% endif %};background-color: white;padding: 30px;
+        overflow: hidden;cursor: -webkit-grab; cursor: grab">
+
+
+
+
+ <div class="form-group">
+  <label for="comment">Dashboard Log
+
+  <button type="button" class="btn btn-danger btn-sm" style="margin-left:10px;" id="deleteLogContent">Delete Content</button>
+
+
+  </label>
+
+
+
+
+  <textarea class="form-control" id="{{ author }}{{ dashboard }}" cols="97" rows="20"
+            readonly id="{{ author }}{{ dashboard }}" >{{ logfile }}</textarea>
+</div>
+
+
+</div>
+<LINK REL=StyleSheet HREF="/static/css/log_terminal_client.css" TYPE="text/css" MEDIA=all>
+<script>
+    var data = {
+            'dashboard': '{{ dashboard }}',
+            'author': '{{ author }}',
+            'csrfmiddlewaretoken': '{{ csrf_token }}',
+        };
+    var update_count = 0;
+    window.setInterval(function () {
+
+        $.ajax({
+            url: '/en/dashboards/plugins/log_terminal_client/check-log-client/',
+            type: 'post',
+            data: data,
+            success: function (data) {
+                var $textarea = $('#' + data['id'])
+                $textarea.val(data['logfile']);
+                if (update_count === 0){
+                    $textarea.css("overflow" ,"hidden");
+                }
+                update_count++;
+            },
+            error: function () {
+
+            }
+        });
+    }, 5000);
+    $('#deleteLogContent').on("click", function () {
+        $.ajax({
+            url: '/en/dashboards/plugins/log_terminal_client/delete-log-content-client/',
+            type: 'post',
+            data: data,
+            success: function (data) {
+               if (data['result']) {
+                    $("#{{ author }}{{ dashboard }}").val('No logs found!')
+               }
+            },
+            error: function () {
+                console.log('error!');
+            }
+        });
+    })
+    $( "#{{ author }}{{ dashboard }}" ).focusin(function() {
+      $( this ).css("overflow" ,"auto");
+    }).focusout(function() {
+        $( this ).css("overflow" ,"hidden");
+      }).blur(function() {
+        $( this ).css("overflow" ,"hidden");
+      });
+</script>
+
+

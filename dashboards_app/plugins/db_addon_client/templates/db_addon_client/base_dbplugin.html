@@ -1,0 +1,33 @@
+{% load i18n staticfiles thumbnail cms_tags apphooks_config_tags sekizai_tags %}
+
+{% block stylesheets %}
+
+    <LINK REL=StyleSheet HREF="/static/db_addon_client/css/db_plugin.css" TYPE="text/css" MEDIA=all>
+
+{% endblock %}
+<p class="database_name"><a href="#" data-toggle="offcanvas"><i class="fa fa-database fa-2x"></i></a></p>
+<div id="db_sidebar_container" class="db_sidebar_container">
+    {#Databases Link#}
+    <div style="display: flex">
+        <div class="database_list bd-callout bd-callout-info"
+             style="float:left;margin-left: 5%;    padding: 5px; height: 100%; border-left: solid ">
+            {#Links to individual Databases#}
+            <div id="db_menu">
+                <p style="font-size: 12px">{{  instance.label}}</p>
+                {% for plugin in instance.child_plugin_instances %}
+                    <p class="ShowTable" data-id="table-content-{{ plugin.id }}" class="database_name"><i
+                        class="fa fa-database fa-1x"></i> {{ plugin.database_name }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="individual_db" style="width: 80%; float:left;margin-left:5%; overflow: hidden;visibility: hidden;">
+            {% for plugin in instance.child_plugin_instances %}
+                <div id="table-content-{{ plugin.id }}" style="width:0px;height:0px;">
+                    {% render_plugin plugin %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+

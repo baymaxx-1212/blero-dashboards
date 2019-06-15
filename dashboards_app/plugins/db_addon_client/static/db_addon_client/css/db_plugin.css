@@ -1,0 +1,108 @@
+
+
+.database_name{
+
+    font-color:#404040;
+    font-size: 14px;
+    text-align: left;
+    margin:5px;
+
+}
+
+.data-table-display{
+
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+
+#db_sidebar_container{
+
+display: none;
+overflow: auto;
+
+}
+
+
+
+
+div.FixedHeader_Cloned table { margin: 0 !important }
+
+a:hover, a:visited, a:link, a:active{
+
+ text-decoration: none;
+    color: #404040;
+}
+
+.selection_color_data2rbg {
+	background-color: #e8e07d !important;
+}
+
+.selection_color_data1rbg {
+	background-color: #9fd9ea !important;
+}
+
+/**/
+
+    tr.group,
+    tr.group:hover {
+        background-color: #696969 !important;
+        cursor: pointer;
+        color: white;
+    }
+    td {
+        font-size: 10px;
+    }
+    th {
+        font-size: 10px;
+        width: 100%;
+    }
+    .dataTables_filter {
+        float: left !important;
+        font-size: 10px;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    .context-menu-item > label {
+        color: #404040 !important;
+        font-size: 10px;
+    }
+
+    table.dataTable tbody th,
+    table.dataTable tbody td {
+        white-space: nowrap;
+
+    }
+    .customTablethead {
+        background: white;
+    }
+    #leftTable {
+        margin-right: 10px;
+    }
+    .customTable thead th {
+        padding: 5px 10px;
+        border: 1px solid black;
+    }
+    .customTable tbody td {
+        padding: 4px;
+        border: 1px solid #e2e2e2;
+    }
+    .removeTr {
+        background: #17a2b8;
+        padding: 4px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .main-block {
+        display: flex;
+        margin-bottom: 30px;
+        height: 150px;
+        overflow: auto;
+    }
+    .customTable tbody tr:nth-child(even) {
+        background-color: #eae9e9;
+    }
+    .customTable tbody tr {
+        background-color: white;
+    }

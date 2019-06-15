@@ -1,0 +1,7 @@
+{% load i18n %}
+
+<div class="aldryn aldryn-dashboards_app aldryn-dashboards_app-dashboards aldryn-dashboards_app-dashboards-featured">
+    {% for dashboard in dashboards_list %}
+        {% include "dashboards_app/includes/dashboard.html" with namespace=instance.app_config.namespace %}
+    {% endfor %}
+</div>

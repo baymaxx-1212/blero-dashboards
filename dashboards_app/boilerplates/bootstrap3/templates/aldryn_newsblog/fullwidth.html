@@ -1,0 +1,18 @@
+{% extends "dashboards_app/task_tracker_base.html" %}
+{% load i18n cms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-16 col-md-push-4">
+                <div class="aldryn aldryn-dashboards_app">
+                    {% block dashboards_app_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <div class="aldryn aldryn-dashboards_app">
+            {% block dashboards_app_footer %}{% endblock %}
+        </div>
+    </div>
+{% endblock content %}

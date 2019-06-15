@@ -1,0 +1,14 @@
+
+.textarea_terminal{
+
+    width: 100%;
+    font-size: 10px;
+    resize: both;
+
+
+}
+
+.terminal_holder{
+    cursor: -webkit-grab;
+    cursor: grab;
+}

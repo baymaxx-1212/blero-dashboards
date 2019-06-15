@@ -1,0 +1,61 @@
+{% load i18n apphooks_config_tags cms_tags sekizai_tags staticfiles thumbnail %}
+
+<dashboard class="aldryn-dashboards_app-dashboard{% if dashboard.is_featured %} aldryn-dashboards_app-featured{% endif %}{% if not dashboard.published %} unpublished{% endif %}{% if dashboard.future %} future{% endif %}">
+    {% if dashboard.featured_image_id %}
+        <p class="visual">
+            {% if not detail_view %}
+                <a href="{{ dashboard.get_absolute_url }}">
+            {% endif %}
+            <img src="{% thumbnail dashboard.featured_image 800x450 crop subject_location=dashboard.featured_image.subject_location %}" alt="{{ dashboard.featured_image.alt }}" class="img-responsive">
+            {% if not detail_view %}
+                </a>
+            {% endif %}
+        </p>
+    {% endif %}
+
+    {% if dashboard.categories %}
+        <p class="category">
+            {% for category in dashboard.categories.all %}
+                <a href="{% namespace_url 'dashboard-list-by-category' category.slug namespace=namespace default='' %}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    <h2>
+        {% if not detail_view %}
+            <a href="{% namespace_url 'dashboard-detail' dashboard.slug namespace=namespace default='' %}">{% render_model dashboard "title" %}</a>
+        {% else %}
+            {% render_model dashboard "title" %}
+        {% endif %}
+    </h2>
+
+    {% if not detail_view %}
+        <div class="lead">
+            {% render_model dashboard "lead_in" "" "" "truncatewords_html:'20'" %}
+        </div>
+    {% endif %}
+
+    {% include "dashboards_app/includes/author.html" with author=dashboard.author %}
+
+    {% if dashboard.tags and detail_view %}
+        <p class="tags">
+            {% for tag in dashboard.tags.all %}
+                <a href="{% namespace_url 'dashboard-list-by-tag' tag=tag.slug namespace=namespace default='' %}">{{ tag.name }}</a>
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    {% if detail_view %}
+        <div class="lead">
+            {% render_model dashboard "lead_in" %}
+        </div>
+    {% endif %}
+
+    {% if detail_view %}
+        <div class="content">
+            {% render_placeholder dashboard.content language placeholder_language %}
+        </div>
+    {% endif %}
+</dashboard>
+
+{% addtoblock "css" %}<link rel="stylesheet" href="{% static 'css/aldryn-dashboards_app/dashboard.css' %}">{% endaddtoblock %}

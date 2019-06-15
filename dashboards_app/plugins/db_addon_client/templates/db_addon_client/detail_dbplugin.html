@@ -1,0 +1,51 @@
+<div id="database-information-{{ plugin.id }}" class="bd-callout bd-callout-info col-md-6 db-info" style="display:none">
+    <h3>Connection Details</h3>
+    <p><b>Database Name:</b> {{ instance.database_name }}</p>
+    <p><b>Database Table Name:</b> {{ instance.database_table_name }}</p>
+    <p><b>Database Filter Column:</b> {{ filtered_column }}</p>
+    <p><b>Database Function: </b>{{ instance.database_filter_column }}</p>
+    <p><b>Database Table Name:</b> {{ instance.database_py_function }}</p>
+
+</div>
+
+<div id="table-holder-{{ plugin.id }}" class="bd-callout bd-callout-info" style="display: none; overflow-y:auto;    margin-right: 5%;padding-right: 5%; width: 100%; float:left ; height:100%;background-color: #f5f7f9;">
+
+
+    <!-- NEVER DELETE ---->
+    <ul style="visibility: hidden;height: 0%">
+
+        <li id="database-table-name-{{ plugin.id }}">{{ instance.database_table_name }}</li>
+        <li id="database-filter-column-{{ plugin.id }}">{{ instance.database_filter_column }}</li>
+        <li id="database-py-function-{{ plugin.id }}">{{ instance.database_py_function }}</li>
+        <li id="database-filtered-column-{{ plugin.id }}">{{ filtered_column }}</li>
+        <li id="database-total-columns-{{ plugin.id }}">{{ total_columns }}</li>
+        <li id="database-pluginid-{{ plugin.id }}">{{ plugin.id }}</li>
+    </ul>
+    <!---------->
+
+    <div id="datatable-header-{{ plugin.id }}" class="mainTable" style="display: inline-block;width:100%;">
+        <div class="main-block">
+            <table id="leftTable" class="customTable" style=" width: 50%; ">
+                <thead>
+                <tr>
+                    <th>Left Click Selected</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody id="leftColumn"></tbody>
+            </table>
+            <table id="rightTable" class="customTable" style=" width: 50%; ">
+                <thead>
+                <tr>
+                    <th>Right Click Selected</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody id="rightColumn"></tbody>
+            </table>
+        </div>
+    </div>
+    {% autoescape off %}
+        {{ data_table }}
+    {% endautoescape %}
+</div>

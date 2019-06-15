@@ -1,0 +1,38 @@
+{% extends "dashboards_app/base.html" %}
+{% load i18n static cms_tags apphooks_config_tags %}
+
+
+{% block javascript-top %}
+{% endblock javascript-top%}
+
+{% block title %}
+    {{ dashboard.title }} - {{ block.super }}
+{% endblock %}
+
+{# <style>#}
+{##}
+{##}
+{##}
+{#        .bd-callout-info {#}
+{#            border-left-color: #60ff43 !important;#}
+{#        }#}
+{##}
+{#        .bd-callout {#}
+{#            padding: 1.25rem;#}
+{#            margin-top: 1.25rem;#}
+{#            margin-bottom: 1.25rem;#}
+{#            border: 1px solid #eee;#}
+{#            border-left-width: .25rem;#}
+{#            border-radius: .25rem;#}
+{#        }#}
+{##}
+{##}
+{##}
+{#    </style>#}
+
+{% block dashboards_app_content %}
+    {% include "dashboards_app/includes/dashboard.html" with detail_view="true" %}
+
+
+
+{% endblock %}

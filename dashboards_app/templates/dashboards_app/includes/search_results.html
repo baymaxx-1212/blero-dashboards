@@ -1,0 +1,27 @@
+{% extends "dashboards_app/task_tracker_base.html" %}
+{% load i18n apphooks_config_tags %}
+
+{% block dashboards_app_content %}
+    <ul>
+        <h3>{% blocktrans with query=query %}Most recent dashboards containing "<strong>{{ query }}</strong>"{% endblocktrans %}</h3>
+        {% for dashboard in object_list %}
+            <li{% if not dashboard.is_published %} class="unpublished"{% endif %}>
+                <a href="{% namespace_url "dashboard-detail" dashboard.slug namespace=view.app_config.namespace default='' %}">
+                    <strong>
+                        {% for category in dashboard.categories.all %}
+                            {{ category.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </strong>
+                    {{ dashboard.title }}<br />
+                    {{ dashboard.lead_in|striptags|truncatewords:"10"|safe }}
+                </a>
+            </li>
+        {% empty %}
+            {% if query %}
+                <p>{% blocktrans with query=query %}No dashboards found{% endblocktrans %}</p>
+            {% else %}
+                <p>{% trans "Enter a query above" %}</p>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load i18n %}
+
+{% if dashboard %}
+    <div class="aldryn aldryn-dashboards_app aldryn-dashboards_app-related">
+        <ul class="list-unstyled">
+            {% for dashboard in dashboard_list %}
+                <li>
+                    <h3><a href="{{ dashboard.get_absolute_url }}">{{ dashboard.title }}</a></h3>
+                    <p>{% trans "by" %} <a href="#">{{ dashboard.author }}</a> {{ dashboard.publishing_date|date }}</p>
+                </li>
+            {% empty %}
+                <li class="well">{% trans "No items available" %}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}

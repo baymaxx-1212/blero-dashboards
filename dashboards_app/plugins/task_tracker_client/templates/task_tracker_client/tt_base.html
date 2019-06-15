@@ -1,0 +1,296 @@
+<div class="bd-callout bd-callout-info task-holder resizable-draggable" position_model="pluginposition" app_label="{{ app_label }}"
+     model_name="{{ model_name }}"
+     id="{{ instance.pk }}"
+      style=  "{% if position.fields.is_resized %}top:{{ position.fields.top }}; left:{{ position.fields.left }}; width:{{ position.fields.width }};
+        height:{{ position.fields.height }}; {% else %} height:300px; width:200px ;top:100px{% endif %};background-color: white;padding: 30px;
+        overflow: hidden;cursor: -webkit-grab; cursor: grab">
+
+
+
+
+    <h4>{{ instance.holder_label }}</h4>
+
+
+    {#            <i style="margin-left: 1px" class="fa fa-info fa-lg" title="id={{ instance.pk }}"></i>#}
+
+    <div style="position:relative;right: -20px;width: 100%;">
+        <button class="btn btn-default " id="add_task_button{{ instance.pk }}"
+                onclick="add_task({{ instance.pk }});"><i class="fa fa-plus fa-lg"></i> New Task
+        </button>
+        {% if only_completed %}
+            <button class="btn btn-default " id="add_task_button{{ instance.pk }}"
+                    onclick="FilterOutstanding({{ instance.pk }},'{{ only_completed }}')"><i
+                class="fa fa-exclamation-circle fa-lg"></i> Show All Tasks
+            </button>
+        {% else %}
+            <button class="btn btn-default " id="add_task_button{{ instance.pk }}"
+                    onclick="FilterOutstanding({{ instance.pk }},'{{ only_completed }}')"><i
+                class="fa fa-exclamation-circle fa-lg"></i> Only Outstanding
+            </button>
+
+        {% endif %}
+
+
+    </div>
+
+
+    <div id="task-holder-container-{{ instance.grid_label }}" class="col-md-12 "
+         style="margin-top: 10px">
+
+        <div class="accordion" id="accordion{{ instance.pk }}">
+
+            {% for key,value in tasks.items %}
+                {% if value.is_complete %}
+                    {% if only_completed %}
+                        <div class="row" id="task-{{ key }}" style="display: none">
+                    {% else %}
+                        <div class="row" id="task-{{ key }}" >
+                    {% endif %}
+                    <div class="col-9">
+
+
+                    <div class="card" style="  margin-bottom: 5px;border-left: 4px solid lightgreen;">
+                    <div class="card-header" id="heading{{ key }}" style="  background-color: lightgrey">
+                {% else %}
+                    <div class="row" id="task-{{ key }}">
+                    <div class="col-9">
+                    <div class="card" style="  margin-bottom: 5px;border-left: 4px solid darkred;">
+                    <div class="card-header" id="heading{{ key }}" style="  background-color: white">
+
+                {% endif %}
+
+
+
+
+
+            <h5 class="mb-0">
+                <input class="form-control task_title" type="text" readonly="true" data-toggle="collapse"
+                       ondblclick="DBTask(this)" data-target="#collapse{{ key }}" value="{{ value.title }}"
+                       id="title_{{ key }}" aria-expanded="true" aria-controls="collapse{{ key }} "
+                       pk_model="{{ key }}" style="border: none">
+
+                </input>
+            </h5>
+
+            </div>
+            <div id="collapse{{ key }}" class="collapse collapse" aria-labelledby="heading{{ key }}"
+                 data-parent="#accordion{{ instance.pk }}">
+                <div class="card-body">
+                    <h6>
+                                      <textarea class="form-control task_content" type="textarea" readonly="true"
+                                                rows="3"
+                                                ondblclick="DBTask(this)" placeholder="{{ value.task_body }}"
+                                                id="content_{{ key }}"
+                                                pk_model="{{ key }}">{{ value.task_body }}  </textarea>
+
+                    </h6>
+
+                </div>
+            </div>
+
+            </div>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-default " id="add_task_button{{ instance.pk }}"
+                        style="background-color: lightgreen"
+                        onclick="TaskCompleted({{ key }});"><i class="fa fa-check fa-lg"></i></button>
+
+                <button class="btn btn-default " id="delete_task_button{{ instance.pk }}" style="background-color: grey"
+                        onclick="DeleteTask({{ key }});"><i class="fa fa-close fa-lg"></i></button>
+
+                <span class="fa-stack-lg ">
+                      <i class="fa fa-calendar-o fa-stack-lg"></i>
+                      <strong class="fa-stack-lg calendar-text">{{ value.days_left }}</strong>
+                    </span>
+
+
+            </div>
+            </div>
+
+            {% endfor %}
+
+            </div>
+            </div>
+
+
+            </div>
+
+
+
+
+
+
+            <script>
+
+                //detect enter in input box
+                $(".task_title").on('keyup', function (e) {
+                    if (e.keyCode == 13) {
+                        $(".task_title").attr('readonly', true);
+                        console.log($(this).attr('id'))
+                        console.log("SDFSDF")
+                        //Save task
+                        var task_value = $(this).val();
+                        SaveTask($(this).attr('pk_model'), task_value, 'Title');
+                    }
+                });
+
+                function FilterOutstanding(instance_id, filter_status) {
+
+                    console.log(filter_status);
+                    $.ajax({
+                        type: "POST",
+                        url: "/en/dashboards/plugins/task_tracker_client/filter_outstanding/",
+                        data: {
+                            filter_status: filter_status,
+                            model_id: instance_id,
+
+                        },
+                        success: function (data) {
+
+                            console.log('tasks filtered ' + instance_id);
+                            location.reload(true);
+
+                        },
+                        error: function (x, t, m) {
+                            console.log("error on AJAX from task in container" + instance_id);
+                            console.log("error" + m);
+
+
+                        }
+                    });
+
+                }
+
+                function TaskCompleted(task_id) {
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/en/dashboards/plugins/task_tracker_client/complete_task/",
+                        data: {
+                            task_id: task_id,
+
+                        },
+                        success: function (data) {
+
+                            console.log("task completed");
+                            $("#heading"+task_id).closest(".card").css("border-left", "4px solid lightgreen")
+                        },
+                        error: function (x, t, m) {
+                            console.log("Error task not completed");
+                            console.log("error" + m);
+
+                        }
+                    })
+
+
+                }
+
+                function DBTask(element) {
+
+                    if (element.classList.contains("task_content")) {
+                        var task_type = 'Content'
+                    } else {
+                        var task_type = 'Title'
+                    }
+
+
+
+                    if (element.readOnly == '') {
+
+                        element.readOnly = true;
+                        //Save contents
+
+                        var task_value = $(element).val();
+
+                        SaveTask(element.getAttribute('pk_model'), task_value, task_type);
+                    } else {
+                        element.readOnly = '';
+
+
+                    }
+
+
+                }
+
+
+                function SaveTask(task_id, task_value, task_type) {
+
+                    console.log(task_value);
+                    $.ajax({
+                        type: "POST",
+                        url: "/en/dashboards/plugins/task_tracker_client/save_task/",
+                        data: {
+                            task_id: task_id,
+                            task_value: task_value,
+                            task_type: task_type,
+
+
+                        },
+                        success: function (data) {
+                            console.log("task saved")
+
+
+                        },
+                        error: function (x, t, m) {
+                            console.log("Error task not saved")
+                            console.log("error" + m);
+
+                        }
+                    })
+
+                }
+
+                function DeleteTask(task_id) {
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/en/dashboards/plugins/task_tracker_client/delete_task/",
+                        data: {
+                            task_id: task_id,
+
+                        },
+                        success: function (data) {
+                            console.log("task deleted")
+                            $("#task-"+task_id).remove()
+
+                        },
+                        error: function (x, t, m) {
+                            console.log("Error task not deleted")
+                            console.log("error" + m);
+
+                        }
+                    })
+
+
+                }
+
+                function add_task(instance_id) {
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/en/dashboards/plugins/task_tracker_client/create_task/",
+                        data: {
+                            model_id: instance_id,
+
+                        },
+                        success: function (data) {
+
+                            console.log('task created ' + instance_id);
+                            $("#accordion"+instance_id).append(data);
+
+                        },
+                        error: function (x, t, m) {
+                            console.log("error on AJAX from task in container" + instance_id);
+                            console.log("error" + m);
+
+
+                        }
+                    });
+
+
+                }
+
+
+            </script>

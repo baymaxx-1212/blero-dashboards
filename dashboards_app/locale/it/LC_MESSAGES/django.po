@@ -1,0 +1,506 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Aldryn News & Blog\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-02 07:59-0500\n"
+"PO-Revision-Date: 2017-03-02 12:59+0000\n"
+"Last-Translator: Paulo Alvarado <paulo.alvarado@divio.ch>\n"
+"Language-Team: Italian (http://www.transifex.com/divio/aldryn-dashboards_app/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin.py:25
+msgid "Mark selected dashboards as published"
+msgstr ""
+
+#: admin.py:33
+msgid "Mark selected dashboards as not published"
+msgstr ""
+
+#: admin.py:41
+msgid "Mark selected dashboards as featured"
+msgstr ""
+
+#: admin.py:49
+msgid "Mark selected dashboards as not featured"
+msgstr ""
+
+#: admin.py:128
+#| msgid "meta description"
+msgid "Meta Options"
+msgstr ""
+
+#: admin.py:137
+msgid "Advanced Settings"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/dashboard_detail.html:18
+#: boilerplates/bootstrap3/templates/dashboards_app/dashboard_detail.html:20
+#: templates/dashboards_app/dashboard_detail.html:15
+msgid "Previous Dashboard"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/dashboard_detail.html:22
+#: templates/dashboards_app/dashboard_detail.html:17
+msgid "Back to Overview"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/dashboard_detail.html:24
+#: boilerplates/bootstrap3/templates/dashboards_app/dashboard_detail.html:26
+#: templates/dashboards_app/dashboard_detail.html:19
+msgid "Next Dashboard"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/dashboard_list.html:9
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/archive.html:21
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/authors.html:10
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/latest_dashboards.html:7
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/related_dashboards.html:12
+#: templates/dashboards_app/dashboard_list.html:8
+#: templates/dashboards_app/plugins/archive.html:22
+#: templates/dashboards_app/plugins/authors.html:9
+#: templates/dashboards_app/plugins/featured_dashboards.html:6
+#: templates/dashboards_app/plugins/latest_dashboards.html:6
+#: templates/dashboards_app/plugins/related_dashboards.html:11
+msgid "No items available"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/includes/pagination.html:8
+msgid "First"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/includes/pagination.html:14
+#: templates/dashboards_app/includes/pagination.html:8
+msgid "Previous"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/includes/pagination.html:47
+#: templates/dashboards_app/includes/pagination.html:42
+msgid "Next"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/includes/pagination.html:53
+msgid "Last"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/includes/search_results.html:4
+#: templates/dashboards_app/includes/search_results.html:6
+#, python-format
+msgid "Most recent dashboards containing \"<strong>%(query)s</strong>\""
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/includes/search_results.html:19
+#: templates/dashboards_app/includes/search_results.html:21
+msgid "No dashboards found"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/includes/search_results.html:21
+#: templates/dashboards_app/includes/search_results.html:23
+msgid "Enter a query above"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/dashboard_search.html:8
+#: templates/dashboards_app/plugins/dashboard_search.html:6
+msgid "Keyword search"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/dashboard_search.html:9
+#: templates/dashboards_app/plugins/dashboard_search.html:7
+msgid "Keyword"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/dashboard_search.html:11
+#: templates/dashboards_app/plugins/dashboard_search.html:10
+msgid "Go"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/categories.html:6
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/tags.html:6
+#: templates/dashboards_app/plugins/categories.html:5
+#: templates/dashboards_app/plugins/tags.html:5
+msgid "All"
+msgstr ""
+
+#: boilerplates/bootstrap3/templates/dashboards_app/plugins/related_dashboards.html:9
+#: templates/dashboards_app/plugins/related_dashboards.html:8
+msgid "by"
+msgstr ""
+
+#: cms_appconfig.py:19
+msgid "the-eagle-has-landed/"
+msgstr ""
+
+#: cms_appconfig.py:20
+msgid "1969/the-eagle-has-landed/"
+msgstr ""
+
+#: cms_appconfig.py:21
+msgid "1969/07/the-eagle-has-landed/"
+msgstr ""
+
+#: cms_appconfig.py:22
+msgid "1969/07/16/the-eagle-has-landed/"
+msgstr ""
+
+#: cms_appconfig.py:23
+msgid "1969/07/16/11/"
+msgstr ""
+
+#: cms_appconfig.py:27
+msgid "Allow"
+msgstr ""
+
+#: cms_appconfig.py:28
+msgid "Redirect to permalink (default)"
+msgstr ""
+
+#: cms_appconfig.py:29
+msgid "Permanent redirect to permalink"
+msgstr ""
+
+#: cms_appconfig.py:30
+msgid "Return 404: Not Found"
+msgstr ""
+
+#: cms_appconfig.py:42
+msgid "application title"
+msgstr ""
+
+#: cms_appconfig.py:45
+msgid "permalink type"
+msgstr ""
+
+#: cms_appconfig.py:47
+msgid ""
+"Choose the style of urls to use from the examples. (Note, all types are "
+"relative to apphook)"
+msgstr ""
+
+#: cms_appconfig.py:51
+msgid "non-permalink handling"
+msgstr ""
+
+#: cms_appconfig.py:54
+msgid "How to handle non-permalink urls?"
+msgstr ""
+
+#: cms_appconfig.py:57
+msgid "Paginate size"
+msgstr ""
+
+#: cms_appconfig.py:60
+msgid "When paginating list views, how many dashboards per page?"
+msgstr ""
+
+#: cms_appconfig.py:63
+msgid "Pagination pages start"
+msgstr ""
+
+#: cms_appconfig.py:66
+msgid ""
+"When paginating list views, after how many pages should we start grouping "
+"the page numbers."
+msgstr ""
+
+#: cms_appconfig.py:70
+msgid "Pagination pages visible"
+msgstr ""
+
+#: cms_appconfig.py:73
+msgid ""
+"When grouping page numbers, this determines how many pages are visible on "
+"each side of the active page."
+msgstr ""
+
+#: cms_appconfig.py:77
+msgid "Excluded featured dashboards count"
+msgstr ""
+
+#: cms_appconfig.py:81
+msgid ""
+"If you are using the Featured Dashboards plugin on the dashboard list view, you "
+"may prefer to exclude featured dashboards from the dashboard list itself to "
+"avoid duplicates. To do this, enter the same number here as in your Featured"
+" Dashboards plugin."
+msgstr ""
+
+#: cms_appconfig.py:90
+msgid "Prefix for template dirs"
+msgstr ""
+
+#: cms_appconfig.py:94
+msgid "Auto-create authors?"
+msgstr ""
+
+#: cms_appconfig.py:96
+msgid "Automatically create authors from logged-in user?"
+msgstr ""
+
+#: cms_appconfig.py:101
+msgid "Include in search index?"
+msgstr ""
+
+#: cms_appconfig.py:103
+msgid "Include dashboards in search indexes?"
+msgstr ""
+
+#: cms_appconfig.py:142
+msgid "untitled"
+msgstr ""
+
+#: cms_appconfig.py:145
+#| msgid "application title"
+msgid "application configuration"
+msgstr ""
+
+#: cms_appconfig.py:146
+#| msgid "application title"
+msgid "application configurations"
+msgstr ""
+
+#: cms_appconfig.py:151
+msgid "Post published by default"
+msgstr ""
+
+#: cms_apps.py:15
+msgid "Dashboards_app"
+msgstr ""
+
+#: cms_plugins.py:66
+msgid "Archive"
+msgstr ""
+
+#: cms_plugins.py:86
+msgid "Dashboard Search"
+msgstr ""
+
+#: cms_plugins.py:100
+msgid "Authors"
+msgstr ""
+
+#: cms_plugins.py:118
+msgid "Categories"
+msgstr ""
+
+#: cms_plugins.py:135
+msgid "Featured Dashboards"
+msgstr ""
+
+#: cms_plugins.py:149
+msgid "Latest Dashboards"
+msgstr ""
+
+#: cms_plugins.py:163
+msgid "Related Dashboards"
+msgstr ""
+
+#: cms_plugins.py:191
+msgid "Tags"
+msgstr ""
+
+#: cms_toolbars.py:92
+msgid "Configure addon"
+msgstr ""
+
+#: cms_toolbars.py:103
+msgid "Dashboard list"
+msgstr ""
+
+#: cms_toolbars.py:110
+msgid "Add new dashboard"
+msgstr ""
+
+#: cms_toolbars.py:118
+msgid "Edit this dashboard"
+msgstr ""
+
+#: cms_toolbars.py:126
+msgid "Delete this dashboard"
+msgstr ""
+
+#: cms_wizards.py:68
+msgid "Content"
+msgstr ""
+
+#: cms_wizards.py:72
+msgid ""
+"Optional. If provided, it will be added to the main body of the dashboard as a"
+" text plugin, that can be formatted."
+msgstr ""
+
+#: cms_wizards.py:126
+msgid "Initial version."
+msgstr ""
+
+#: cms_wizards.py:132
+msgid "New news/blog dashboard"
+msgstr ""
+
+#: cms_wizards.py:135
+msgid "Create a new news/blog dashboard."
+msgstr ""
+
+#: feeds.py:37
+#, python-format
+#| msgid "Dashboards on {0}"
+msgid "Dashboards on %(site_name)s"
+msgstr ""
+
+#: menu.py:20
+msgid "Aldryn Dashboards_app Menu"
+msgstr ""
+
+#: models.py:77
+msgid "untitled-dashboard"
+msgstr ""
+
+#: models.py:88
+msgid "title"
+msgstr ""
+
+#: models.py:90
+msgid "slug"
+msgstr ""
+
+#: models.py:95
+msgid ""
+"Used in the URL. If changed, the URL will change. Clear it to have it re-"
+"created automatically."
+msgstr ""
+
+#: models.py:99
+msgid "lead"
+msgstr ""
+
+#: models.py:101
+msgid ""
+"The lead gives the reader the main idea of the story, this is useful in "
+"overviews, lists or as an introduction to your dashboard."
+msgstr ""
+
+#: models.py:108
+msgid "meta title"
+msgstr ""
+
+#: models.py:111
+msgid "meta description"
+msgstr ""
+
+#: models.py:113
+msgid "meta keywords"
+msgstr ""
+
+#: models.py:122
+msgid "author"
+msgstr ""
+
+#: models.py:123
+msgid "owner"
+msgstr ""
+
+#: models.py:125 models.py:286
+msgid "Apphook configuration"
+msgstr ""
+
+#: models.py:127
+msgid "categories"
+msgstr ""
+
+#: models.py:129
+msgid "publishing date"
+msgstr ""
+
+#: models.py:131
+msgid "is published"
+msgstr ""
+
+#: models.py:133
+msgid "is featured"
+msgstr ""
+
+#: models.py:136
+#| msgid "featured dashboard"
+msgid "featured image"
+msgstr ""
+
+#: models.py:152
+msgid "related dashboards"
+msgstr ""
+
+#: models.py:271
+msgid ""
+"The maximum duration (in seconds) that this plugin's content should be "
+"cached."
+msgstr ""
+
+#: models.py:301 models.py:312
+#, python-format
+msgid "%s archive"
+msgstr ""
+
+#: models.py:306
+msgid "max dashboards"
+msgstr ""
+
+#: models.py:308
+msgid "The maximum number of found dashboards display."
+msgstr ""
+
+#: models.py:353
+#, python-format
+msgid "%s authors"
+msgstr ""
+
+#: models.py:359
+#, python-format
+msgid "%s categories"
+msgstr ""
+
+#: models.py:403
+msgid "The maximum number of featured dashboards display."
+msgstr ""
+
+#: models.py:426
+msgid "featured dashboard"
+msgstr ""
+
+#: models.py:428
+#, python-format
+msgid "featured dashboards: %(count)s"
+msgstr ""
+
+#: models.py:440
+msgid "The maximum number of latest dashboards to display."
+msgstr ""
+
+#: models.py:446
+msgid ""
+"The maximum number of featured dashboards to exclude from display. E.g. for "
+"uses in combination with featured dashboards plugin."
+msgstr ""
+
+#: models.py:474
+#, python-format
+msgid "%(app_title)s latest dashboards: %(latest_dashboards)s"
+msgstr ""
+
+#: models.py:502
+msgid "Related dashboards"
+msgstr ""
+
+#: models.py:544
+#, python-format
+msgid "%s tags"
+msgstr ""
+
+#~ msgid "app. config"
+#~ msgstr "app. config"

@@ -1,0 +1,18 @@
+{% extends "dashboards_app/two_column.html" %}
+{% load i18n cms_tags %}
+
+{% block dashboards_app_content %}
+    <div class="aldryn-dashboards_app-list">
+        {% for dashboard in dashboard_list %}
+            {% include "dashboards_app/includes/dashboard.html" %}
+        {% empty %}
+            <p class="well">{% trans "No items available" %}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block dashboards_app_footer %}
+    <div class="aldryn-dashboards_app-pagination">
+        {% include "dashboards_app/includes/pagination.html" %}
+    </div>
+{% endblock %}

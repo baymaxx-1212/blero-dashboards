@@ -1,0 +1,9 @@
+{% load i18n %}
+
+<div class="aldryn aldryn-dashboards_app aldryn-dashboards_app-dashboards">
+    {% for dashboard in dashboard_list %}
+        {% include "dashboards_app/includes/dashboard.html" with namespace=instance.app_config.namespace %}
+    {% empty %}
+        <p class="well">{% trans "No items available" %}</p>
+    {% endfor %}
+</div>

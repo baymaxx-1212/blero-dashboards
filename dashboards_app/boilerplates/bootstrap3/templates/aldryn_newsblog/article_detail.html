@@ -1,0 +1,31 @@
+{% extends "dashboards_app/fullwidth.html" %}
+{% load i18n cms_tags apphooks_config_tags %}
+
+{% block title %}{{ dashboard.title }} - {{ block.super }}{% endblock %}
+{% block breadcrumb %}{% endblock %}
+
+{% block dashboards_app_content %}
+    <div class="aldryn-dashboards_app-detail">
+        {% include "dashboards_app/includes/dashboard.html" with detail_view="true" %}
+    </div>
+    {% static_placeholder "dashboards_app_social" %}
+{% endblock %}
+
+{% block dashboards_app_footer %}
+    <div class="aldryn-dashboards_app-pager">
+        <ul class="pager">
+            {% if prev_dashboard %}
+                <li class="previous"><a href="{{ prev_dashboard.get_absolute_url }}"><span aria-hidden="true">&larr;</span> {% trans "Previous Dashboard" %}</a></li>
+            {% else %}
+                <li class="previous"><span class="text-muted"><span aria-hidden="true">&larr;</span> {% trans "Previous Dashboard" %}</span></li>
+            {% endif %}
+            <li><span class="pager-back">– <a href="{% namespace_url "dashboard-list" %}">{% trans "Back to Overview" %}</a> –</span></li>
+            {% if next_dashboard %}
+                <li class="next"><a href="{{ next_dashboard.get_absolute_url }}">{% trans "Next Dashboard" %} <span aria-hidden="true">&rarr;</span></a></li>
+            {% else %}
+                <li class="next"><span class="text-muted">{% trans "Next Dashboard" %} <span aria-hidden="true">&rarr;</span></span></li>
+            {% endif %}
+        </ul>
+    </div>
+    {% static_placeholder "dashboards_app_comments" %}
+{% endblock %}

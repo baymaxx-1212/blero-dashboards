@@ -1,0 +1,256 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+/* for dashboard main look  */
+
+html  {
+
+  background: #f5f7f9;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+body{
+    padding-bottom: 0px !important;
+    background: #f5f7f9;
+    height: 100% ;
+    width: 100%;
+
+    padding: 0;
+    margin:0;
+
+
+}
+
+
+.left-selection, .right-selection {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 100px;
+    overflow: auto;
+    background: #fff;
+}
+.left-selection li, .right-selection li {
+    font-size: 10px;
+}
+
+.right-selection li {
+    color: #e8e07d;
+}
+
+.left-selection li {
+    color: #9fd9ea;
+}
+
+.main_body{
+
+    padding: 3%;
+    height: 100%;
+    overflow: scroll;
+
+}
+
+.dash-sidebar{
+    background-color: white;
+    width: 40px;
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 0px;
+    padding:0px;
+
+
+
+}
+
+table.dataTable.no-footer {
+    border-bottom: none !important;
+}
+
+
+#split-bar {
+    background-color:white;
+    height:5%;
+    float: right;
+    width: 100%;
+    cursor: col-resize;
+    padding: 0px;
+    position: relative;
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+
+.full_container{
+    width: 100%;
+    height: 75px;
+    margin-bottom: 50px;
+    margin-left: 0%;
+
+
+}
+.dashboard_title{
+    background-color: transparent;
+
+    height: 4%;
+    margin: 0px;
+    padding: 2px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    float:left;
+
+}
+
+
+#split-bar p{
+     color: #404040;
+}
+
+#split-bar p:hover{
+     color: #5bc0de;
+}
+
+.dashboard_title  a:visited, a:link, a:active{
+
+ text-decoration: none;
+    color: #404040;
+    margin:0;
+}
+
+.dashboard_title a:hover{
+
+ text-decoration: none;
+    color: #5bc0de;
+    margin:0;
+}
+
+.dashboard_settings  a:visited, a:link, a:active{
+
+ text-decoration: none;
+    color: #404040;
+    margin:0;
+}
+
+.dashboard_settings a:hover{
+
+ text-decoration: none;
+    color: #5bc0de;
+    margin:0;
+}
+
+
+.dashboard_settings{
+    background-color: transparent;
+    height: 4%;
+    margin: 0px;
+    padding: 2px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+
+
+}
+
+.dashboard_lead{
+    width: 40%;
+    height:75px;
+    background-color: white;
+    margin-left:10px;
+    margin-top:0px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e2e2e2;
+
+}
+
+
+.list-inline > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.dt-buttons {
+    position: relative;
+}
+
+.dt-buttons button {
+    position: absolute;
+    left: 180px;
+    z-index: 99999;
+    font-size: 10px;
+    line-height: 20px;
+    top: calc(100% + 115px);
+    padding: 0 10px;
+}
+
+.fixed-header {
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+}
+
+.dashboard_settings .edit-mode {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+.dashboard_settings .edit-mode a {
+    margin-left: 5px;
+}
+.hide {
+    display: none!important;
+}
+
+.form-element-container {
+    max-width: 100% !important;
+}
+
+.form-element-container .submit_form {
+    width: 100%;
+    height: 100%;
+}
+
+.form-element-container .form-element {
+    width: 100%;
+}
+
+.form-row>.col, .form-row>[class*=col-] {
+    flex-direction: row;
+}
+
+.form-row .col-resized {
+    flex-basis: auto;
+}
+
+.resizable-draggable.ui-draggable-disabled {
+    cursor: initial!important;
+}
+
+
+#main_body.edit-mode-on {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGUlEQVQYV2NkIBIwEqmOYVQh3pAiNnj+AwALaAEKfsPrZgAAAABJRU5ErkJggg==);
+  background-position: 18px 11px;
+}
+
+.opac {
+  opacity: .8;
+}
+
+.move-cursor {
+  cursor: move;
+}
+
+.grab-cursor {
+  cursor: grab;
+  cursor: -webkit-grab;
+}

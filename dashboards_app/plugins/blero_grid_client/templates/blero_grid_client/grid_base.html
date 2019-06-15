@@ -1,0 +1,127 @@
+<div class="blero-grid-wrapper resizable-draggable" position_model="pluginposition" app_label="{{ app_label }}" model_name="{{ model_name }}"
+     id="{{ instance.pk }}"
+     style="{% if position.fields.is_resized %}top:{{ position.fields.top }};
+    left:{{ position.fields.left }}; width:{{ position.fields.width }}; height:{{ position.fields.height }};{% else %}height:  300px;
+    width:100%;{% endif %}background-color: white;padding: 0px;overflow: hidden;cursor: -webkit-grab; cursor: grab;">
+
+        <i style="margin-left: 1px" class="fa fa-info fa-lg edit-mode-visible" title="hot id=hot{{ instance.pk }}">
+             Evaluation version of Handsontable Pro. Not licensed for use in a production environment. Please see license.
+        </i>
+    <div class="form-group">
+        <label>{{ instance.grid_label }}</label>
+         <input id="save_grid_button{{ instance.pk }}" type="button" style="margin-left:10px;"
+             class="btn btn-info btn-sm"  value="Save Grid" onclick="save_grid{{ instance.pk }}();" />
+    </div>
+
+        <div id="blero-grid-{{ instance.grid_label }}" >
+
+        </div>
+
+        <div id="hot{{ instance.pk }}" grid_id="{{ instance.pk }}"></div>
+</div>
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+
+    //Code for modal
+
+    var container = document.getElementById('hot{{ instance.pk }}');
+    var test={{ columns |length }};
+    var hot{{ instance.pk }}=new Handsontable(container,{
+    startCols: {{ columns |length }},
+    startRows: {{ rows |length }},
+    rowHeaders: true,
+
+    manualColumnResize: true,
+    manualRowResize: true,
+    colHeaders: true,
+            contextMenu: {
+            callback: function (key, selection, clickEvent) {
+              console.log(key, selection, clickEvent);
+            },
+            items: {
+                add_row: {
+                    name: 'Edit Column Value',
+                    callback: function () {
+                        console.log('add_row')
+                        $('#exampleModal').modal('show');
+
+                    }
+                },
+                add_column: {
+                    name: 'Format Column',
+                    callback: function () {
+                        console.log('add_column')
+                    }
+                },
+                edit_format: {
+                    name: 'Format Cell ',
+                    callback: function () {
+                        console.log('Format')
+                    }
+                },
+            }
+        },
+
+
+        });
+
+
+    //Update Cell values
+
+    {% for key, value in cell_data.items %}
+        hot{{ instance.pk }}.setDataAtCell({{ key }},{{ value.column_number }},'{{ value.cell_content }}');
+
+    {% endfor %}
+
+
+
+
+</script>
+
+<script>
+
+function save_grid{{ instance.pk }}() {
+
+    data=[]
+    var grid_values=hot{{ instance.pk }}.getData();
+    var col_values = hot{{ instance.pk }}.getColHeader();
+    var row_values=hot{{ instance.pk }}.getRowHeader();
+
+    console.log(grid_values);
+
+    $.ajax({
+        type: "POST",
+        url: "/en/dashboards/plugins/blero_grid_client/",
+        data: {
+            grid_values:grid_values,
+            col_values: col_values,
+            row_values: row_values,
+            model_id:{{ instance.pk }},
+
+        },
+        success: function (data) {
+
+            console.log('Grid Saved {{ instance.pk }}')
+
+        },
+        error: function (x, t, m) {
+            console.log("error on AJAX from grid {{ instance.pk }}");
+            console.log("error"+m);
+
+
+        }
+    });
+}
+
+</script>

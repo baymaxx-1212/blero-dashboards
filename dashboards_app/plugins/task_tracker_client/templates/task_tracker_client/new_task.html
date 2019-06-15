@@ -1,0 +1,29 @@
+<div class="row" id="task-{{ new_task.id }}" >
+    <div class="col-10">
+        <div class="card" style=" margin-bottom: 5px;border-left: 4px solid darkred;">
+            <div class="card-header" id="heading{{ new_task.id }}" style=" background-color: white"><h5 class="mb-0">
+                <input class="form-control task_title" type="text" readonly="true" data-toggle="collapse"
+                       ondblclick="DBTask(this)" data-target="#collapse{{ new_task.id }}" value="New Task"
+                       id="title_{{ new_task.id }}" aria-expanded="true" aria-controls="collapse{{ new_task.id }} "
+                       pk_model="{{ new_task.id }}" style="border: none">
+                </input></h5></div>
+            <div id="collapse{{ new_task.id }}" class="collapse collapse" aria-labelledby="heading{{ new_task.id }}"
+                 data-parent="#accordion{{ instance_pk }}">
+                <div class="card-body">
+                    <h6>
+                        <textarea class="form-control task_content" type="textarea" readonly="true" rows="3"
+                                  ondblclick="DBTask(this)" placeholder="" id="content_{{ new_task.id }}"
+                                                     pk_model="{{ new_task.id }}"></textarea>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-default " id="add_task_button{{ instance_pk }}" style="background-color: lightgreen"
+                onclick="TaskCompleted({{ new_task.id }});"><i class="fa fa-check fa-lg"></i></button>
+        <button class="btn btn-default " id="delete_task_button{{ instance_pk }}" style="background-color: grey"
+                onclick="DeleteTask({{ new_task.id }});"><i class="fa fa-close fa-lg"></i></button>
+        <span class="fa-stack-lg "> <i class="fa fa-calendar-o fa-stack-lg"></i> <strong
+            class="fa-stack-lg calendar-text">0</strong> </span></div>
+</div>

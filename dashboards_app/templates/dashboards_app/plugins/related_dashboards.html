@@ -1,0 +1,14 @@
+{% load i18n %}
+
+{% if dashboard %}
+    <ul>
+        {% for dashboard in dashboard_list %}
+            <li>
+                <h3><a href="{{ dashboard.get_absolute_url }}">{{ dashboard.title }}</a></h3>
+                <p>{% trans "by" %} <a href="#">{{ dashboard.author }}</a> {{ dashboard.publishing_date|date }}</p>
+            </li>
+        {% empty %}
+            <li>{% trans "No items available" %}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

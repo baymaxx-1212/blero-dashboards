@@ -1,0 +1,22 @@
+{% extends "dashboards_app/task_tracker_base.html" %}
+{% load i18n cms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-17">
+                {% if view.show_header %}
+                    {% static_placeholder "dashboards_app_feature" %}
+                {% endif %}
+                <div class="aldryn aldryn-dashboards_app">
+                    {% block dashboards_app_content %}{% endblock %}
+                </div>
+            </div>
+            <div class="col-md-7 aldryn-dashboards_app aldryn-dashboards_app-sidebar">
+                {% static_placeholder "dashboards_app_sidebar" %}
+                {% block dashboards_app_sidebar %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% block dashboards_app_footer %}{% endblock %}
+{% endblock content %}
