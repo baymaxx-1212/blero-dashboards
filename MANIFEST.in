@@ -2,4 +2,21 @@ include LICENSE
 include README.rst
 recursive-include dashboards_app/static *
 recursive-include dashboards_app/templates *
+
+
+recursive-include dashboards_app/plugins/blero_container_client/templates *
+
+recursive-include dashboards_app/plugins/blero_grid_client/templates *
+
+recursive-include dashboards_app/plugins/db_addon_client/templates *
+recursive-include dashboards_app/plugins/blero_container_client/static *
+
+recursive-include dashboards_app/plugins/form_addon_client/templates *
+recursive-include dashboards_app/plugins/form_addon_client/static *
+
+recursive-include dashboards_app/plugins/log_terminal_client/templates *
+recursive-include dashboards_app/plugins/log_terminal_client/static *
+
+recursive-include dashboards_app/plugins/task_tracker_client/templates *
+
 recursive-include docs *
