@@ -29,7 +29,6 @@ class BleroGridClientPlugin(CMSPluginBase):
 
 
         try:
-
             model_name=instance._meta.model_name
             app_label=instance._meta.app_label
             context.update({
@@ -44,7 +43,7 @@ class BleroGridClientPlugin(CMSPluginBase):
             })
             active_grid = BleroGrid.objects.get(pk=instance.pk)
             grid_values = GridCells.objects.all().filter(model=active_grid)
-            row_values=GridRows.objects.all().filter(model=active_grid)
+            row_values = GridRows.objects.all().filter(model=active_grid)
 
             cell_data = {}
             for cell in grid_values:
@@ -54,29 +53,25 @@ class BleroGridClientPlugin(CMSPluginBase):
 
             })
 
-            row_data={}
+            row_data = {}
             for row in row_values:
-                row_data[int(row.row_number)]=row.row_content
+                row_data[int(row.row_number)] = row.row_content
 
-            row_content=[]
+            row_content = []
             for value in sorted(row_data.keys()):
                 row_content.append(row_data[value])
 
             context.update({
-                'row_data':row_content
+                'row_data': row_content
             })
 
-
-
-            server_fields=self.get_server_fields(instance)
+            server_fields = self.get_server_fields(instance)
             context.update(server_fields)
 
         except Exception as e:
             logger.exception("error")
 
-
         return context
-
     def get_server_fields(self, instance):
 
         """
