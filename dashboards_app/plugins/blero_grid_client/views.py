@@ -41,6 +41,14 @@ def save_grid(request):
         #GridCells
         for row in range(n_rows):
 
+            row_content=row_values[row]
+            temp_cell, created = GridRows.objects.update_or_create(model=active_grid, row_number=row,
+
+                                                                    defaults={
+                                                                        'content_edited': True,
+                                                                        'row_content': row_content,
+                                                                    }
+                                                                    )
             for column in range(n_columns):
 
 

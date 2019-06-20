@@ -30,37 +30,50 @@ class BleroGridClientPlugin(CMSPluginBase):
 
 
 
-        model_name=instance._meta.model_name
-        app_label=instance._meta.app_label
-        context.update({
-            'model_name': model_name,
-            'app_label': app_label
-        })
+        try:
+            model_name=instance._meta.model_name
+            app_label=instance._meta.app_label
+            context.update({
+                'model_name': model_name,
+                'app_label': app_label
+            })
 
-        context.update({
-            'instance': instance
-
-
-        })
-        active_grid = BleroGrid.objects.get(pk=instance.pk)
-        grid_values = GridCells.objects.all().filter(model=active_grid)
-
-        cell_data = {}
-        for cell in grid_values:
-            cell_data[cell.row_number] = {'column_number': cell.column_number, 'cell_content': cell.cell_content}
-        context.update({
-            'cell_data': cell_data
-
-        })
+            context.update({
+                'instance': instance
 
 
-        server_fields=self.get_server_fields(instance)
-        context.update(server_fields)
+            })
+            active_grid = BleroGrid.objects.get(pk=instance.pk)
+            grid_values = GridCells.objects.all().filter(model=active_grid)
+            row_values = GridRows.objects.all().filter(model=active_grid)
 
+            cell_data = {}
+            for cell in grid_values:
+                cell_data[cell.row_number] = {'column_number': cell.column_number, 'cell_content': cell.cell_content}
+            context.update({
+                'cell_data': cell_data
 
+            })
+
+            row_data = {}
+            for row in row_values:
+                row_data[int(row.row_number)] = row.row_content
+
+            row_content = []
+            for value in sorted(row_data.keys()):
+                row_content.append(row_data[value])
+
+            context.update({
+                'row_data': row_content
+            })
+
+            server_fields = self.get_server_fields(instance)
+            context.update(server_fields)
+
+        except Exception as e:
+            logger.exception("error")
 
         return context
-
     def get_server_fields(self, instance):
 
         """
