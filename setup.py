@@ -8,20 +8,20 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='dashboards-app',
-    version='0.1',
-    packages=find_packages(),
+    name='dashboards-app-baymaxx',
+    version='1.5',
+    packages=find_packages(exclude=['docs', 'tests*']),
     include_package_data=True,
     license='MIT License',  # example license
     description='Blero Dashboards',
     long_description=README,
+    long_description_content_type="text/markdown",
     url='https://www.blero.dev/',
-    author='Your Name',
+    author='Blero',
     author_email='info@blero.dev',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: X.Y',  # replace "X.Y" as appropriate
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',  # example license
         'Operating System :: OS Independent',

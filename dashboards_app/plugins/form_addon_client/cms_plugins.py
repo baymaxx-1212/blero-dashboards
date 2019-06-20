@@ -36,7 +36,8 @@ class BleroGridFormPluginClient(BleroGridClientPlugin):
     """
     model=BleroGridFormClient
     name="Form Grid"
-    render_template = "/app/dashboards_app/plugins/blero_grid_client/templates/blero_grid_client/grid_base.html"
+    import dashboards_app
+    render_template = dashboards_app.__path__[0] + "/plugins/blero_grid_client/templates/blero_grid_client/grid_base.html"
 
     def render(self, context, instance, placeholder):
         data = []
