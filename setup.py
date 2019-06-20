@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='dashboards-app-baymaxx',
-    version='1.5',
+    version='0.0.1',
     packages=find_packages(exclude=['docs', 'tests*']),
     include_package_data=True,
     license='MIT License',  # example license
@@ -18,7 +18,7 @@ setup(
     long_description_content_type="text/markdown",
     url='https://www.blero.dev/',
     author='Blero',
-    author_email='info@blero.dev',
+    author_email='developer@blero.dev',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
