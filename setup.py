@@ -8,8 +8,8 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='dashboards-app-baymaxx',
-    version='1.5',
+    name='dashboards-app-blero',
+    version='1.0',
     packages=find_packages(exclude=['docs', 'tests*']),
     include_package_data=True,
     license='MIT License',  # example license
