@@ -50,26 +50,52 @@
               console.log(key, selection, clickEvent);
             },
             items: {
-                add_row: {
-                    name: 'Edit Column Value',
+                column_value: {
+                    name: 'Edit column value',
                     callback: function () {
-                        console.log('add_row')
+                        console.log('column_value')
                         $('#exampleModal').modal('show');
 
                     }
                 },
-                add_column: {
-                    name: 'Format Column',
+                column_format: {
+                    name: 'Format column',
                     callback: function () {
-                        console.log('add_column')
+                        console.log("Test")
                     }
                 },
-                edit_format: {
-                    name: 'Format Cell ',
-                    callback: function () {
-                        console.log('Format')
-                    }
-                },
+                row_value: { // Own custom property
+                            // Custom rendered element in the context menu
+                            renderer: function(hot, wrapper, row, col, prop, itemValue) {
+
+
+                              var elem = document.createElement('input');
+                              var row_headers= window["hot{{ instance.pk }}"].getRowHeader();
+
+
+                              var active_row=row
+                              elem.placeholder="edit row value";
+                              elem.className+="input-group-text";
+                              elem.addEventListener("keyup", function(event) {
+                                    event.preventDefault();
+                                        if (event.keyCode === 13) {
+
+
+                                            row_headers[active_row]=elem.value
+                                            window["hot{{ instance.pk }}"].updateSettings({
+
+                                                                    rowHeaders: row_headers
+                                                                });
+
+
+                                        }
+                                    });
+
+                              return elem;
+        },
+        disableSelection: true, // Prevent mouseoever from highlighting the item for selection
+        isCommand: false // Prevent clicks from executing command and closing the menu
+      },
             }
         },
 
@@ -82,8 +108,18 @@
     {% for key, value in cell_data.items %}
         hot{{ instance.pk }}.setDataAtCell({{ key }},{{ value.column_number }},'{{ value.cell_content }}');
 
+
+
+    {% endfor %}
+    var row_initials=[];
+    {% for  value in row_data %}
+    row_initials.push("{{ value }}");
     {% endfor %}
 
+            hot{{ instance.pk }}.updateSettings({
+
+            rowHeaders: row_initials
+        });
 
 
 

@@ -1,0 +1,60 @@
+2019-06-16 18:20:51,451 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  -31- starting logging
+2019-06-16 18:20:54,011 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  -31- starting logging
+2019-06-16 18:21:31,040 - dashboards_app.plugins.blero_grid_client.cms_plugins - ERROR  -71- error
+Traceback (most recent call last):
+  File "/app/dashboards_app/plugins/blero_grid_client/cms_plugins.py", line 47, in render
+    row_values=GridRows.objects.all().filet(model=active_grid)
+AttributeError: 'QuerySet' object has no attribute 'filet'
+2019-06-16 18:21:49,883 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  {'0': {'row_number': '0', 'row_content': '1'}, '1': {'row_number': '1', 'row_content': '2'}, '2': {'row_number': '2', 'row_content': 'test'}}
+2019-06-16 18:24:56,574 - dashboards_app.plugins.blero_grid_client.cms_plugins - ERROR  -71- error
+Traceback (most recent call last):
+  File "/app/dashboards_app/plugins/blero_grid_client/cms_plugins.py", line 59, in render
+    row_data[row.row_number]=row.row_content
+TypeError: list indices must be integers or slices, not str
+2019-06-16 18:25:30,753 - dashboards_app.plugins.blero_grid_client.cms_plugins - ERROR  -71- error
+Traceback (most recent call last):
+  File "/app/dashboards_app/plugins/blero_grid_client/cms_plugins.py", line 59, in render
+    row_data.appen(row.row_content)
+AttributeError: 'list' object has no attribute 'appen'
+2019-06-16 18:25:43,077 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  ['test', '2', '1']
+2019-06-16 18:25:43,163 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  ['test', '2', '1']
+2019-06-16 18:27:38,202 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  ['test', '2', '1']
+2019-06-16 18:29:39,543 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  ['test', '2', '1']
+2019-06-16 18:31:00,024 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  ['test', '2', '1']
+2019-06-16 18:32:09,367 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  ['test', '2', '1']
+2019-06-16 18:33:40,174 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  {'1': '2', '0': '1', '2': 'test'}
+2019-06-16 18:35:47,077 - dashboards_app.plugins.blero_grid_client.cms_plugins - ERROR  -75- error
+Traceback (most recent call last):
+  File "/app/dashboards_app/plugins/blero_grid_client/cms_plugins.py", line 62, in render
+    for i in sorted(row_values.keys()):
+AttributeError: 'QuerySet' object has no attribute 'keys'
+2019-06-16 18:36:06,624 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  0
+2019-06-16 18:36:06,624 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  1
+2019-06-16 18:36:06,624 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  2
+2019-06-16 18:36:06,625 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  {'2': 'test', '0': '1', '1': '2'}
+2019-06-16 18:36:31,809 - dashboards_app.plugins.blero_grid_client.cms_plugins - ERROR  -75- error
+Traceback (most recent call last):
+  File "/app/dashboards_app/plugins/blero_grid_client/cms_plugins.py", line 59, in render
+    row_data[row.row_number]=int(row.row_content)
+ValueError: invalid literal for int() with base 10: 'test'
+2019-06-16 18:37:04,412 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  0
+2019-06-16 18:37:04,413 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  1
+2019-06-16 18:37:04,414 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  2
+2019-06-16 18:37:04,414 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  {0: '1', 1: '2', 2: 'test'}
+2019-06-16 18:37:35,344 - dashboards_app.plugins.blero_grid_client.cms_plugins - ERROR  -75- error
+Traceback (most recent call last):
+  File "/app/dashboards_app/plugins/blero_grid_client/cms_plugins.py", line 62, in render
+    for key,value in sorted(row_data.keys()):
+TypeError: 'int' object is not iterable
+2019-06-16 18:38:19,981 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  0
+2019-06-16 18:38:19,981 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  1
+2019-06-16 18:38:19,982 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  2
+2019-06-16 18:38:19,982 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  {0: '1', 1: '2', 2: 'test'}
+2019-06-16 18:39:16,444 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  1
+2019-06-16 18:39:16,445 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  2
+2019-06-16 18:39:16,445 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  test
+2019-06-16 18:39:16,446 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  {0: '1', 1: '2', 2: 'test'}
+2019-06-16 18:39:16,555 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  1
+2019-06-16 18:39:16,556 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  2
+2019-06-16 18:39:16,556 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  test
+2019-06-16 18:39:16,556 - dashboards_app.plugins.blero_grid_client.cms_plugins - DEBUG  {0: '1', 1: '2', 2: 'test'}

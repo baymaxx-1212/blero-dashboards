@@ -25,6 +25,9 @@ def save_grid(request):
 
         row_values=request.POST.getlist('row_values[]')
         col_values=request.POST.getlist('col_values[]')
+
+        logger.logger.debug(row_values)
+        logger.logger.debug(col_values)
         model_id=request.POST['model_id']
         n_rows=len(row_values)
         n_columns=len(col_values)
@@ -41,6 +44,15 @@ def save_grid(request):
         #GridCells
         for row in range(n_rows):
 
+            row_content=row_values[row]
+            temp_cell, created = GridRows.objects.update_or_create(model=active_grid, row_number=row,
+
+                                                                    defaults={
+                                                                        'content_edited': True,
+                                                                        'row_content': row_content,
+                                                                    }
+                                                                    )
+
             for column in range(n_columns):
 
 
@@ -56,7 +68,8 @@ def save_grid(request):
 
                     temp_cell.refresh_from_db()
 
-        logger.debug("TEST end")
+        logger.debug("Grid values updatd")
+
     except Exception as e:
         logger.exception("error from view")
 
